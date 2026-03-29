@@ -46,7 +46,7 @@ int main() {
     vector<int> nums = { 4,6,8,1,2,0,1,2,7,10,5,111,0,3,5,9,4,6,0 };
     int n = nums.size();
     vector<int> temp(n);
-    merge_sort(nums,0,n - 1,temp);
+    merge_sort(nums, 0, n - 1, temp);
     for (int i = 0;i < n;i++) {
         cout << nums[i] << " ";
     }

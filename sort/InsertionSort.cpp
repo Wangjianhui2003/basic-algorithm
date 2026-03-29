@@ -29,7 +29,7 @@ void InsertSort2(int r[], int n) {
     for (int i = 2;i <= n;i++) {
         r[0] = r[i];        //r[0]是监视哨
         //顺序比较和移动，查找r[i]的插入位置
-        for (j = i - 1;r[0] < r[j];j--){
+        for (j = i - 1;r[0] < r[j];j--) {
             r[j + 1] = r[j]; //记录后移，继续向前搜索 
         }
         r[j + 1] = r[0];      //插入r[i]
