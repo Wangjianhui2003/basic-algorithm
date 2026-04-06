@@ -1,6 +1,6 @@
-#include <stdio.h>
-#include <stdint.h>
 #include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
 
 // 基本类型,不用built-in，大小可能会变化
 // 比如long long - int64_t:标准要求long long 至少64bit
@@ -25,32 +25,32 @@ typedef struct {
     f32 y;
 } vec2f;
 
+// pointer
 int main(int argc, char *argv[]) {
-    //=== 
+    //===
     i32 x = 123;
-    i32* px = &x;
-    printf("nums:%d,addr:%p\n",x,px);
+    i32 *px = &x;
+    printf("nums:%d,addr:%p\n", x, px);
     *px = 321;
-    printf("nums:%d,addr:%p\n",x,px);
-
+    printf("nums:%d,addr:%p\n", x, px);
 
     //=== structure pointer
 
     //=== array pointer
-    i32 nums[] = {1,2,3,4,5};
+    i32 nums[] = {1, 2, 3, 4, 5};
 
     //[] means: dereference and do some math!
     // so the array in c always have "size" variable along with it
-    for(i32 i = 0;i < 5;i++){
-        printf("%d,",nums[i]);
+    for (i32 i = 0; i < 5; i++) {
+        printf("%d,", nums[i]);
     }
     printf("\n");
 
     *nums = 6;
     *(nums + 1) = 7;
 
-    for(i32 i = 0;i < 5;i++){
-        printf("%d,",nums[i]);
+    for (i32 i = 0; i < 5; i++) {
+        printf("%d,", nums[i]);
     }
     printf("\n");
 

@@ -23,14 +23,26 @@ typedef float f32;
 typedef double f64;
 
 typedef struct {
-  f32 x;
-  f32 y;
+    f32 x;
+    f32 y;
 } vec2f;
 
-// 结构体
+// 动态内存分配
 int main(int argc, char *argv[]) {
-  u32 num_vectors = 1000;
-  vec2f *vectors = (vec2f *)malloc(sizeof(vec2f) * num_vectors);
-  printf("how");
-  return 0;
+    u32 num_vectors = 10;
+    vec2f *vectors = (vec2f *)malloc(sizeof(vec2f) * num_vectors);
+
+    for (u32 i = 0; i < num_vectors; i++) {
+        //[]可以解引用
+        vectors[i].x = i * 1;
+        vectors[i].y = i * 2;
+    }
+
+    for (u32 i = 0; i < num_vectors; i++) {
+        printf("vector:<%f,%f>\n", vectors[i].x, vectors[i].y);
+    }
+
+    free(vectors);
+
+    return 0;
 }
