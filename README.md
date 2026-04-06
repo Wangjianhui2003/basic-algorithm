@@ -1,1 +1,1 @@
-## implementation of basic algorithm in c++
+# implementation of basic algorithm in c++
