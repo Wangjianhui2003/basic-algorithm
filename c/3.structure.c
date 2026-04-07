@@ -71,6 +71,11 @@ struct __attribute__((packed)) B {
     int i;
 };
 
+// align rule:
+//  member alignment depends on the member type
+//  struct alignment usually depends on the largest member alignment
+//  final result also depends on platform, compiler, and packing settings
+
 // 结构体
 int main(int argc, char *argv[]) {
     // === vec
