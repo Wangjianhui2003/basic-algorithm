@@ -20,13 +20,60 @@ typedef i32 b32;
 typedef float f32;
 typedef double f64;
 
+// normal struct
 typedef struct {
     f32 x;
     f32 y;
 } vec2f;
 
+// union
+typedef struct {
+    enum { SHAPE_SQUARE, SHAPE_CIRCLE, SHAPE_TRIANGLE } kind;
+
+    // union取决于最大的struct
+    union {
+        struct {
+            f32 s;
+        } square;
+        struct {
+            f32 r;
+        } circle;
+        struct {
+            f32 b, h;
+
+        } triangle;
+    } content;
+} shape;
+
+// 4 byte对齐
+typedef struct {
+    char a;
+    i32 b;
+} align;
+
+// 8 byte对齐
+typedef struct {
+    char a;
+    i64 b;
+} align2;
+
+// 不使用对齐
+#pragma pack(1)
+struct A {
+    char c;
+    int i;
+};
+#pragma pack()
+
+// 不使用对齐2
+struct __attribute__((packed)) B {
+    char c;
+    int i;
+};
+
 // 结构体
 int main(int argc, char *argv[]) {
+    // === vec
     vec2f v1 = {32.14, 42.52};
     printf("vector:<%f,%f>\n", v1.x, v1.y);
     vec2f v2 = {.x = 3.14};
@@ -35,5 +82,8 @@ int main(int argc, char *argv[]) {
     // literal（复合字面量）。这样右边就变成了一个合法表达式，可以赋值给 v1
     v1 = (vec2f){.x = 42.4, .y = 142.1};
     printf("vector:<%f,%f>\n", v1.x, v1.y);
+
+    // === shape
+    shape s = {.kind = SHAPE_CIRCLE, .content.circle.r = 123};
     return 0;
 }

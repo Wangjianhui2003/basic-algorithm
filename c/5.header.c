@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <stdint.h>
-#include <stdio.h>
+
+#include "lib/foo.h"
 
 // 基本类型,不用built-in，大小可能会变化
 // 比如long long - int64_t:标准要求long long 至少64bit
@@ -14,20 +15,21 @@ typedef uint16_t u16;
 typedef uint32_t u32;
 typedef uint64_t u64;
 
-// bool
 typedef i8 b8;
 typedef i32 b32;
 
 typedef float f32;
 typedef double f64;
 
-// 基本类型
-// 编译时： gcc helloworld.c -Wall -Wextra -pedantic 可以输出更多警告
-int main(int argc, char *argv[]) {
-    f32 f1 = 234.11;
-    f64 f2 = 234.11;
+typedef struct {
+    f32 x;
+    f32 y;
+} vec2f;
 
-    printf("%f and %f\n", f1, f2);
-    printf("hellw world\n");
+// header
+int main(int argc, char *argv[]) {
+    // gcc 5.header.c foo.c
+    // 编译不用带.h文件!
+    foo();
     return 0;
 }
