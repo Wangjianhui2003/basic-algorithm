@@ -81,3 +81,5 @@ Testing/
 *.vsix
 
 out
+
+test.cpp
